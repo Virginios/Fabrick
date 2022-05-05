@@ -1,8 +1,8 @@
 package com.project.fabrickinterview.application.controller;
 
 import com.project.fabrickinterview.application.validator.DateValidator;
-import com.project.fabrickinterview.domain.cashaccount.FabrickService;
-import com.project.fabrickinterview.domain.cashaccount.model.CashAccountListResponse;
+import com.project.fabrickinterview.domain.FabrickService;
+import com.project.fabrickinterview.domain.transaction.dto.TransactionResponse;
 import com.project.fabrickinterview.domain.cashaccount.model.CashAccountResponse;
 import com.project.fabrickinterview.domain.exception.DateFormatException;
 import com.project.fabrickinterview.domain.exception.DateRangeException;
@@ -52,12 +52,22 @@ public class FabrickController {
 
     @Operation(summary = "Get list of cash account")
     @ApiResponse(responseCode = "200", description = "List of all cash account has been returned")
-    @GetMapping(value = "/cashaccount/all", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<CashAccountListResponse> getAllTransactions(@RequestParam String fromAccountingDate, @RequestParam String toAccountingDate) {
+    @GetMapping(value = "/transaction/all", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<TransactionResponse> getAllTransactions(@RequestParam String fromAccountingDate, @RequestParam String toAccountingDate) {
         return Optional.of(dateValidator.isValidRange(fromAccountingDate, toAccountingDate))
                 .filter(bool -> bool)
-                .map(b -> ResponseEntity.of(service.getAllTransactions(accountId, fromAccountingDate, toAccountingDate)))
+                .map(b -> ResponseEntity.of(service.getAllTransactionsBetweenDate(accountId, fromAccountingDate, toAccountingDate)))
                 .orElseThrow(DateRangeException::new);
+    }
+
+    @Operation(summary = "Get list of cash account")
+    @ApiResponse(responseCode = "200", description = "List of all cash account has been returned")
+    @GetMapping(value = "/transaction/saveAll", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> saveAllTransactions(@RequestParam String fromAccountingDate, @RequestParam String toAccountingDate) {
+        Optional.of(dateValidator.isValidRange(fromAccountingDate, toAccountingDate))
+                .filter(bool -> bool)
+                .ifPresentOrElse(b -> service.saveTransactions(accountId, fromAccountingDate, toAccountingDate), DateRangeException::new);
+        return ResponseEntity.ok().build();
     }
 
 }

@@ -1,9 +1,6 @@
 package com.project.fabrickinterview.domain.moneytransfer.dto;
 
 
-import com.project.fabrickinterview.domain.moneytransfer.dto.AmountDto;
-import com.project.fabrickinterview.domain.moneytransfer.dto.CreditorDto;
-import com.project.fabrickinterview.domain.moneytransfer.model.Debtor;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
@@ -17,7 +14,7 @@ public class MoneyTransferResponse {
     String status;
     String direction;
     CreditorDto creditor;
-    Debtor debtor;
+    DebtorDto debtor;
     String cro;
     String uri;
     String trn;

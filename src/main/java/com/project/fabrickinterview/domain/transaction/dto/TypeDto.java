@@ -1,4 +1,4 @@
-package com.project.fabrickinterview.domain.cashaccount.model;
+package com.project.fabrickinterview.domain.transaction.dto;
 
 import lombok.Value;
 

@@ -1,14 +1,15 @@
-package com.project.fabrickinterview.domain.cashaccount.model;
+package com.project.fabrickinterview.domain.transaction.model;
 
 import lombok.Value;
 
 @Value
-public class TransactionDto {
+public class Transaction {
     String transactionId;
     String operationId;
     String accountingDate;
     String valueDate;
-    TypeDto type;
+    String typeEnumeration;
+    String typeValue;
     Integer amount;
     String currency;
     String description;
