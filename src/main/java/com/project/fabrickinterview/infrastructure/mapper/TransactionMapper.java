@@ -1,4 +1,4 @@
-package com.project.fabrickinterview.application.mapper;
+package com.project.fabrickinterview.infrastructure.mapper;
 
 import com.project.fabrickinterview.domain.transaction.dto.TransactionDto;
 import com.project.fabrickinterview.domain.transaction.dto.TypeDto;

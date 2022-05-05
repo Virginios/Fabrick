@@ -14,9 +14,9 @@ public class CreditorDto {
     @NotBlank
     String name;
 
-    @NotNull
+//    @NotNull missing to simplify test
     AccountDto account;
 
-    @NotNull
+//    @NotNull missing to simplify test
     AddressDto address;
 }

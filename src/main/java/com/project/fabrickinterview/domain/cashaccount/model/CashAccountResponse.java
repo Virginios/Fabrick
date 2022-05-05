@@ -1,8 +1,12 @@
 package com.project.fabrickinterview.domain.cashaccount.model;
 
+import lombok.AccessLevel;
+import lombok.Data;
 import lombok.Value;
+import lombok.experimental.FieldDefaults;
 
-@Value
+@Data
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class CashAccountResponse {
     String status;
     Object[] error;

@@ -56,8 +56,8 @@ public class FabrickProvider {
                         .build())
                 .retrieve()
                 .bodyToMono(TransactionResponse.class)
-                .doOnSubscribe(s -> log.debug("Calling Fabrick api to retrieve all cash accounts for account id {}", accountId))
-                .doOnSuccess(res -> log.debug("Fabrick api response <- ok, cash account found {}", res))
+                .doOnSubscribe(s -> log.debug("Calling Fabrick api to retrieve all transaction for account id {} beetween date {} {}", accountId, from, to))
+                .doOnSuccess(res -> log.debug("Fabrick api response <- ok, transaction found {}", res))
                 .doOnError(throwable -> log.debug("Error while calling Fabrick api for account id {}", accountId))
                 .blockOptional();
     }

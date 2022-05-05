@@ -1,8 +1,11 @@
 package com.project.fabrickinterview.domain.transaction.dto;
 
-import lombok.Value;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.experimental.FieldDefaults;
 
-@Value
+@Data
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class TransactionDto {
     String transactionId;
     String operationId;

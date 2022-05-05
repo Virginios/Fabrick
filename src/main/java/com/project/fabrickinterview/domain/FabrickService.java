@@ -1,6 +1,6 @@
 package com.project.fabrickinterview.domain;
 
-import com.project.fabrickinterview.application.mapper.TransactionMapper;
+import com.project.fabrickinterview.infrastructure.mapper.TransactionMapper;
 import com.project.fabrickinterview.domain.transaction.dto.ListResponseDto;
 import com.project.fabrickinterview.domain.transaction.dto.TransactionResponse;
 import com.project.fabrickinterview.domain.cashaccount.model.CashAccountResponse;

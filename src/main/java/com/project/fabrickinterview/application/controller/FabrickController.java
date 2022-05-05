@@ -50,8 +50,9 @@ public class FabrickController {
                 .orElseThrow(DateFormatException::new);
     }
 
-    @Operation(summary = "Get list of cash account")
-    @ApiResponse(responseCode = "200", description = "List of all cash account has been returned")
+    @Operation(summary = "Get list of transaction")
+    @ApiResponse(responseCode = "200", description = "List of all transaction has been returned")
+    @ApiResponse(responseCode = "400", description = "Some fields in the request were not accepted")
     @GetMapping(value = "/transaction/all", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<TransactionResponse> getAllTransactions(@RequestParam String fromAccountingDate, @RequestParam String toAccountingDate) {
         return Optional.of(dateValidator.isValidRange(fromAccountingDate, toAccountingDate))
@@ -60,13 +61,15 @@ public class FabrickController {
                 .orElseThrow(DateRangeException::new);
     }
 
-    @Operation(summary = "Get list of cash account")
-    @ApiResponse(responseCode = "200", description = "List of all cash account has been returned")
+    @Operation(summary = "Save list of retrieved transaction in db")
+    @ApiResponse(responseCode = "200", description = "List of all transaction has been saved")
+    @ApiResponse(responseCode = "400", description = "Some fields in the request were not accepted")
     @GetMapping(value = "/transaction/saveAll", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> saveAllTransactions(@RequestParam String fromAccountingDate, @RequestParam String toAccountingDate) {
-        Optional.of(dateValidator.isValidRange(fromAccountingDate, toAccountingDate))
-                .filter(bool -> bool)
-                .ifPresentOrElse(b -> service.saveTransactions(accountId, fromAccountingDate, toAccountingDate), DateRangeException::new);
+        if (!dateValidator.isValidRange(fromAccountingDate, toAccountingDate))
+            throw new DateFormatException();
+
+        service.saveTransactions(accountId, fromAccountingDate, toAccountingDate);
         return ResponseEntity.ok().build();
     }
 

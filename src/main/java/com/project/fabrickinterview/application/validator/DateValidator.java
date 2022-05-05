@@ -18,7 +18,7 @@ public class DateValidator {
             simpleDateFormat.setLenient(false);
             simpleDateFormat.parse(field);
             isValid = true;
-        } catch (ParseException ignored) {
+        } catch (ParseException | NullPointerException ignored) {
         }
         return Objects.nonNull(field) && isValid;
     }
@@ -27,7 +27,7 @@ public class DateValidator {
         try {
             simpleDateFormat.setLenient(false);
             return simpleDateFormat.parse(from).before(simpleDateFormat.parse(to));
-        } catch(ParseException e) {
+        } catch(ParseException | NullPointerException e) {
             throw new DateFormatException();
         }
     }
