@@ -83,6 +83,4 @@ public class TransactionMapperIT extends IntegrationTest {
         dto.setDescription("desc");
         return dto;
     }
-
-
 }

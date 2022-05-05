@@ -64,7 +64,7 @@ public class DateValidatorTest {
     @Test
     public void isValidRangeShouldThrowsDateFormatException() {
         Exception exception = assertThrows(DateFormatException.class, () ->
-            sut.isValidRange("2019-12.01", "2019-11-01"));
+                sut.isValidRange("2019-12.01", "2019-11-01"));
         Exception exception1 = assertThrows(DateFormatException.class, () ->
                 sut.isValidRange(null, "2019-11-01"));
         assertEquals("Formato data non valido", exception.getMessage());

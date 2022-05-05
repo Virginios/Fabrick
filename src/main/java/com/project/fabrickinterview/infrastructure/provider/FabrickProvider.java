@@ -1,10 +1,10 @@
 package com.project.fabrickinterview.infrastructure.provider;
 
-import com.project.fabrickinterview.domain.transaction.dto.TransactionResponse;
 import com.project.fabrickinterview.domain.cashaccount.model.CashAccountResponse;
 import com.project.fabrickinterview.domain.exception.MoneyTransferException;
 import com.project.fabrickinterview.domain.moneytransfer.dto.MoneyTransferRequest;
 import com.project.fabrickinterview.domain.moneytransfer.dto.MoneyTransferResponse;
+import com.project.fabrickinterview.domain.transaction.dto.TransactionResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

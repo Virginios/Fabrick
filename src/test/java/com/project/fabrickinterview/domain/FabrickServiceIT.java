@@ -5,19 +5,18 @@ import com.project.fabrickinterview.domain.transaction.dto.ListResponseDto;
 import com.project.fabrickinterview.domain.transaction.dto.TransactionDto;
 import com.project.fabrickinterview.domain.transaction.dto.TransactionResponse;
 import com.project.fabrickinterview.domain.transaction.dto.TypeDto;
-import com.project.fabrickinterview.infrastructure.mapper.TransactionMapper;
 import com.project.fabrickinterview.infrastructure.provider.FabrickProvider;
 import com.project.fabrickinterview.infrastructure.repository.TransactionRepository;
 import org.junit.Assert;
 import org.junit.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.List;
 import java.util.Optional;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.when;
 
 public class FabrickServiceIT extends IntegrationTest {
 

@@ -72,5 +72,4 @@ public class FabrickController {
         service.saveTransactions(accountId, fromAccountingDate, toAccountingDate);
         return ResponseEntity.ok().build();
     }
-
 }
